@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpeedRent | Vehicle Rental Web App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <header>
+    <h1>SpeedRent</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#vehicles">Vehicles</a>
+      <a href="#booking">Book Now</a>
+      <a href="#contact">Contact</a>
+      <button id="theme-toggle">🌞</button>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>Drive Your Dream, Anytime!</h2>
+    <p>Rent cars with ease. Fast, affordable, and reliable service across Bangladesh.</p>
+    <a href="#vehicles" class="btn">Explore Vehicles</a>
+  </section>
+
+  <section id="vehicles">
+    <h2 class="section-title">Available Vehicles</h2>
+    <div id="vehicle-list" class="grid"></div>
+  </section>
+
+  <section id="booking">
+    <h2 class="section-title">Book Your Ride</h2>
+    <form id="booking-form">
+      <label>Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label>Select Vehicle:</label>
+      <select id="vehicle-select"></select>
+
+      <label>Pick-up Date:</label>
+      <input type="date" id="pickup" required>
+
+      <label>Return Date:</label>
+      <input type="date" id="return" required>
+
+      <button type="submit" class="btn">Confirm Booking</button>
+    </form>
+    <p id="booking-status"></p>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p>Email: support@speedrent.com</p>
+    <p>Phone: +880 1326 521 122</p>
+    <p>Location: Rajshahi, Bangladesh</p>
+  </section>
+
+  <footer>
+    <p>© 2025 SpeedRent | Designed by Shahriar Imroz Soscho</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
