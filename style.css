@@ -1,21 +1,29 @@
+/* ===================== Variables ===================== */
 :root {
   --bg-dark: #0f172a;
   --bg-light: #f8fafc;
   --text-dark: #e2e8f0;
   --text-light: #0f172a;
   --accent: #38bdf8;
+  --accent-dark: #0ea5e9;
   --card-dark: #1e293b;
   --card-light: #ffffff;
+  --shadow-dark: rgba(0,0,0,0.35);
+  --shadow-light: rgba(0,0,0,0.15);
+  --gradient: linear-gradient(135deg, #38bdf8, #0ea5e9);
+}
+
+/* ===================== Global ===================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   transition: background 0.5s, color 0.5s;
-}
-
-body.dark {
   background: var(--bg-dark);
   color: var(--text-dark);
 }
@@ -25,6 +33,13 @@ body.light {
   color: var(--text-light);
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+
+/* ===================== Header ===================== */
 header {
   display: flex;
   justify-content: space-between;
@@ -32,38 +47,49 @@ header {
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(8px);
+  background: rgba(15,23,42,0.95);
+  backdrop-filter: blur(10px);
   z-index: 100;
+  box-shadow: 0 2px 15px var(--shadow-dark);
+  transition: background 0.5s, box-shadow 0.5s;
 }
 
 body.light header {
-  background: rgba(248, 250, 252, 0.95);
+  background: rgba(248,250,252,0.95);
+  box-shadow: 0 2px 15px var(--shadow-light);
 }
 
 header h1 {
-  color: var(--accent);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 nav a {
-  color: inherit;
-  margin: 0 1rem;
-  text-decoration: none;
-  transition: 0.3s;
+  margin: 0;
+  padding: 0 0.5rem;
+  font-weight: 500;
 }
 
 nav a:hover {
-  color: var(--accent);
+  color: var(--accent-dark);
+  transform: scale(1.05);
 }
 
 #theme-toggle {
   cursor: pointer;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
   border: none;
   font-size: 1.2rem;
-  transition: transform 0.3s, background 0.3s;
+  transition: transform 0.3s, background 0.3s, color 0.3s;
 }
 
 #theme-toggle:hover {
@@ -72,113 +98,336 @@ nav a:hover {
   color: #0f172a;
 }
 
+/* ===================== Hero ===================== */
 .hero {
   text-align: center;
   padding: 6rem 2rem;
-  transition: background 0.5s, color 0.5s;
+  background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 0 0 50% 50% / 0 0 5% 5%;
+  box-shadow: 0 10px 30px var(--shadow-dark);
+}
+
+body.light .hero {
+  background: linear-gradient(120deg, #f8fafc 0%, #e2e8f0 100%);
+  box-shadow: 0 10px 30px var(--shadow-light);
 }
 
 .hero h2 {
   color: var(--accent);
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
 }
 
 .hero p {
   max-width: 600px;
   margin: 1rem auto;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
+/* ===================== Buttons ===================== */
 .btn {
   display: inline-block;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.6rem;
   margin-top: 1rem;
-  background: var(--accent);
-  color: #0f172a;
-  border-radius: 10px;
-  text-decoration: none;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: 12px;
   font-weight: 600;
   transition: 0.4s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 15px var(--shadow-dark);
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 25px var(--shadow-dark);
 }
 
+/* ===================== Sections ===================== */
 .section-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--accent);
-  margin: 3rem 0 2rem;
+  margin: 4rem 0 2rem;
+  position: relative;
 }
 
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ===================== Grid & Cards ===================== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding: 0 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .card {
   background: var(--card-dark);
-  padding: 1.5rem;
-  border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
   text-align: center;
+  box-shadow: 0 6px 15px var(--shadow-dark);
+  transition: transform 0.4s, box-shadow 0.4s;
+  animation: float 6s ease-in-out infinite;
 }
 
 body.light .card {
   background: var(--card-light);
   color: var(--text-light);
+  box-shadow: 0 6px 15px var(--shadow-light);
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+  transform: translateY(-10px) scale(1.05) rotateZ(0.5deg);
+  box-shadow: 0 18px 35px var(--shadow-dark);
 }
 
 .card img {
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 1rem;
+  transition: transform 0.3s, filter 0.3s;
 }
 
-form {
+.card img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ===================== Booking Section ===================== */
+.booking-container {
   display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  margin: 0 auto;
-  gap: 0.8rem;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  flex-wrap: wrap;
 }
 
-input, select, button {
-  padding: 0.8rem;
-  border-radius: 8px;
+#booking {
+  /* center the booking section content and constrain width */
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: transparent;
+}
+
+.booking-inner {
+  width: 100%;
+  max-width: 1100px; /* keeps booking layout centered like other sections */
+}
+
+.booking-form-card, .booking-image-card {
+  flex: 1;
+  min-width: 320px;
+  max-width: 500px;
+}
+
+.booking-form-card {
+  background: var(--card-dark);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow-dark);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+body.light .booking-form-card {
+  background: var(--card-light);
+  color: var(--text-light);
+  box-shadow: 0 8px 30px var(--shadow-light);
+}
+
+.booking-form-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 18px 35px var(--shadow-dark);
+}
+
+.booking-form-card label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.booking-form-card input,
+.booking-form-card select,
+.booking-form-card textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 12px;
   border: none;
   outline: none;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-input:focus, select:focus {
-  box-shadow: 0 0 10px var(--accent);
+.booking-form-card input:focus,
+.booking-form-card select:focus,
+.booking-form-card textarea:focus {
+  box-shadow: 0 0 15px var(--accent);
   transform: scale(1.02);
 }
 
-button {
-  cursor: pointer;
+.booking-form-card button {
+  width: 100%;
+  margin-top: 1.8rem;
 }
 
+/* Booking Image */
+.booking-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.4s, box-shadow 0.4s;
+  box-shadow: 0 8px 25px var(--shadow-dark);
+}
+
+.booking-image-card img:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 18px 35px var(--shadow-dark);
+}
+
+/* ===================== Contact Section ===================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+}
+
+.contact-card {
+  background: var(--card-dark);
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 15px var(--shadow-dark);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+body.light .contact-card {
+  background: var(--card-light);
+  color: var(--text-light);
+  box-shadow: 0 6px 15px var(--shadow-light);
+}
+
+.contact-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 35px var(--shadow-dark);
+}
+
+.contact-card img {
+  width: 50px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.contact-card img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+.contact-card h3 {
+  margin: 0.5rem 0;
+  color: var(--accent);
+}
+
+.contact-card p a:hover {
+  color: var(--accent-dark);
+}
+
+.contact-form-container {
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+  padding: 2rem;
+  border-radius: 16px;
+  background: var(--card-dark);
+  box-shadow: 0 8px 25px var(--shadow-dark);
+}
+
+body.light .contact-form-container {
+  background: var(--card-light);
+  color: var(--text-light);
+  box-shadow: 0 8px 25px var(--shadow-light);
+}
+
+.contact-form-container h3 {
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.contact-form-container form input,
+.contact-form-container form textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: none;
+}
+
+/* ===================== Footer ===================== */
 footer {
   text-align: center;
-  padding: 1.5rem;
-  margin-top: 3rem;
+  padding: 2rem;
   background: #0b1324;
   color: #94a3b8;
 }
+
 body.light footer {
   background: #e2e8f0;
   color: #0f172a;
+}
+
+/* ===================== Animations ===================== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 900px) {
+  .booking-container {
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    align-items: center;
+  }
+
+  .booking-form-card, .booking-image-card {
+    max-width: 100%;
+  }
+
+  .booking-image-card img {
+    max-width: 100%;
+  }
+
+  .grid, .contact-grid {
+    padding: 0 1rem;
+  }
+  header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  nav {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
