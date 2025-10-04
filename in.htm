@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="dark">
+  <!-- Header -->
   <header>
     <h1>SpeedRent</h1>
     <nav>
@@ -18,44 +19,90 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section id="home" class="hero">
     <h2>Drive Your Dream, Anytime!</h2>
     <p>Rent cars with ease. Fast, affordable, and reliable service across Bangladesh.</p>
     <a href="#vehicles" class="btn">Explore Vehicles</a>
   </section>
 
+  <!-- Vehicles Section -->
   <section id="vehicles">
     <h2 class="section-title">Available Vehicles</h2>
-    <div id="vehicle-list" class="grid"></div>
+    <div id="vehicle-list" class="grid">
+      <!-- Vehicles dynamically loaded via JS -->
+    </div>
   </section>
 
+  <!-- Booking Section -->
   <section id="booking">
-    <h2 class="section-title">Book Your Ride</h2>
-    <form id="booking-form">
-      <label>Full Name:</label>
-      <input type="text" id="name" required>
+    <div class="booking-inner">
+    <div class="booking-container">
+      <!-- Booking Form -->
+      <div class="booking-form-card">
+        <form id="booking-form">
+          <label>Full Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+          
+          <label>Select Vehicle:</label>
+          <select id="vehicle-select" name="vehicle" required></select>
+          
+          <label>Pick-up Date:</label>
+          <input type="date" id="pickup" name="pickup" required>
+          
+          <label>Return Date:</label>
+          <input type="date" id="return" name="return" required>
 
-      <label>Select Vehicle:</label>
-      <select id="vehicle-select"></select>
+          <button type="submit" class="btn">Confirm Booking</button>
+        </form>
+        <p id="booking-status"></p>
+      </div>
 
-      <label>Pick-up Date:</label>
-      <input type="date" id="pickup" required>
-
-      <label>Return Date:</label>
-      <input type="date" id="return" required>
-
-      <button type="submit" class="btn">Confirm Booking</button>
-    </form>
-    <p id="booking-status"></p>
+      <!-- Vehicle Image -->
+      <div class="booking-image-card">
+        <img src="https://images.unsplash.com/photo-1608889172832-5a013ac1c064?auto=format&fit=crop&w=800&q=80" alt="Book Your Ride" />
+      </div>
+    </div>
+    </div>
   </section>
 
+  <!-- Contact Section -->
   <section id="contact">
     <h2 class="section-title">Contact Us</h2>
-    <p>Email: support@speedrent.com</p>
-    <p>Phone: +880 1326 521 122</p>
-    <p>Location: Rajshahi, Bangladesh</p>
+    
+    <!-- Contact Info -->
+    <div class="contact-grid">
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/38bdf8/new-post.png" alt="Email Icon" />
+        <h3>Email</h3>
+        <p><a href="mailto:support@speedrent.com">support@speedrent.com</a></p>
+      </div>
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/38bdf8/phone.png" alt="Phone Icon" />
+        <h3>Phone</h3>
+        <p>+880 1326 521 122</p>
+      </div>
+      <div class="contact-card">
+        <img src="https://img.icons8.com/ios-filled/50/38bdf8/marker.png" alt="Location Icon" />
+        <h3>Location</h3>
+        <p>Rajshahi, Bangladesh</p>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-container">
+      <h3>Send Us a Message</h3>
+      <form id="contact-form">
+        <input type="text" id="contact-name" name="contact-name" placeholder="Your Name" required>
+        <input type="email" id="contact-email" name="contact-email" placeholder="Your Email" required>
+        <textarea id="contact-message" name="contact-message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+        <p id="contact-status"></p>
+      </form>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 SpeedRent | Designed by Shahriar Imroz Soscho</p>
   </footer>
